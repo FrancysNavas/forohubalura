@@ -1,5 +1,7 @@
-package com.aluracursos.forohubalura.domain;
+package com.aluracursos.forohubalura.domain.respuesta;
 
+import com.aluracursos.forohubalura.domain.topico.Topico;
+import com.aluracursos.forohubalura.domain.usuario.Usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,11 +13,9 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity(name = "Respuesta")
 @Table(name = "respuestas")
 public class Respuesta {
@@ -29,13 +29,17 @@ public class Respuesta {
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
-    private Boolean solucion;
+    private boolean solucion;
 
     @ManyToOne
     @JoinColumn(name = "topico_id")
     private Topico topico;
 
     @ManyToOne
-    @JoinColumn(name = "autor_id")
-    private Usuario autor;
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    public Respuesta() {
+
+    }
 }
